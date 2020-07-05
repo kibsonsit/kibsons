@@ -1,0 +1,64 @@
+agm-map {
+    height: 500px;
+    width: 800px;
+}
+.mat-form-field {
+    margin: 5px;
+  }
+
+  .mat-table__wrapper .mat-table {
+    min-width: auto !important;
+    width: 100% !important;
+}
+
+.mat-header-row {
+    width: 100%;
+}
+
+.mat-row {
+    width: 100%;
+}
+.mat-column-slno {
+    text-align: center;
+    flex: 0 0 15% !important;
+    // min-width: 50px !important;
+}
+.mat-column-addresstitle {
+    text-align: left;
+    flex: 0 0 15% !important;
+    // min-width: 125px !important;
+}
+.mat-column-county {
+    text-align: left;
+    flex: 0 0 15% !important;
+    // min-width: 104px !important;
+}
+.mat-column-area {
+    text-align: left;
+    flex: 0 0 15% !important;
+    // min-width: 104px !important;
+}
+.mat-column-address {
+    text-align: left;
+    flex: 0 0 15% !important;
+    // min-width: 150px !important;
+}
+.mat-column-landmark {
+    text-align: left;
+    flex: 0 0 1 5% !important;
+    // min-width: 150px !important;
+}
+.element-row:hover {
+    background: #f5f5f5;
+  }
+
+  .mat-table {
+    overflow: auto;
+    max-height: 500px;
+  }
+  
+  .element-row {
+    position: relative;
+    cursor: pointer;
+  }
+ 

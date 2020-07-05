@@ -1,0 +1,131 @@
+.user-menu{
+    .user-info{
+        height: 100px;
+        width: 250px;
+        box-shadow: none !important;        
+        img{
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            border: 1px solid rgba(0, 0, 0, 0.12); 
+        }
+        h2{
+            font-size: 16px;
+            font-weight: 400;
+        }
+        h3{
+            font-size: 14px;
+            font-weight: 400;
+        }
+        p{
+            font-size: 12px;
+        }
+    }
+    .mat-menu-item{
+        font-size: 14px;
+        height: 36px;
+        line-height: 36px;
+    }
+}
+
+.kib-top-header {
+    background-color: #0d2c6c;
+    color: #fff;
+    line-height: 46px;
+    text-decoration: none !important;
+    width: 100%;
+    font-family: Kibfonts !important;
+}
+
+    .kib-top-header img {
+        height: 25px;
+        width: auto;
+        margin: auto 15px auto 0px;
+    }
+
+    .kib-top-header .free-delivery {
+        width: 25%;
+        float: left;
+        display: inline-flex;
+        border-right: 1px solid #fff;
+        height: 50px;
+    }
+
+    .kib-top-header p {
+        color: #fff;
+        font-size: 15px;
+        line-height: 50px;
+    }
+
+    .kib-top-header i {
+        color: #fff;
+        font-size: 25px;
+        line-height: 50px;
+        margin-right: 20px;
+    }
+
+    .kib-top-header .callus {
+        width: 15%;
+        float: left;
+        display: inline-flex;
+        border-right: 1px solid #fff;
+        height: 50px;
+        padding: 0px 15px;
+    }
+
+        .kib-top-header .callus i {
+            color: #fff;
+            font-size: 20px;
+            line-height: 50px;
+        }
+
+    .kib-top-header .social-icons2 {
+        width: 25%;
+        float: left;
+        display: inline-flex;
+        border-right: 1px solid #fff;
+        height: 50px;
+        padding: 0px 15px;
+    }
+
+        .kib-top-header .social-icons2 i {
+            color: #fff;
+            font-size: 20px;
+            line-height: 50px;
+            margin: 0px 0px 0px 20px;
+        }
+
+    .kib-top-header .top-login {
+        width: 20%;
+        float: left;
+        display: inline-flex;
+        height: 50px;
+        padding: 0px 15px;
+    }
+
+        .kib-top-header .top-login i {
+            color: #fff;
+            font-size: 20px;
+            line-height: 50px;
+            margin: 0px 0px 0px 10px;
+        }
+
+        .kib-top-header .top-login a {
+            color: #fff;
+            font-size: 15px;
+            line-height: 50px;
+        }
+
+.del-fresh-icon {
+    width: 15%;
+    float: left;
+    display: inline-flex;
+    height: 50px;
+}
+
+    .del-fresh-icon img {
+        width: 100%;
+        height: 50px;
+    }
+
+   

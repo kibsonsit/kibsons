@@ -1,0 +1,127 @@
+<mat-sidenav-container >
+    <div fxLayout="row"  fxLayoutAlign="center center"  class="h-100 p-3">
+            <form [formGroup]="form"  #loginForm="ngForm"  class="mat-elevation-z6"  (ngSubmit)="tryRegister(loginForm)">
+            <!-- <div fxLayoutAlign="end center">
+                <app-flags-menu ></app-flags-menu>
+            </div>
+            <app-content-header [icon]="'exit_to_app'" [title]="'Kibsons Registration'" [hideBreadcrumb]="true" [hasBgImage]="true" [class]="'py-4'">
+            </app-content-header>              -->
+            <div fxLayout="row" fxLayoutAlign="center center"  class="p-3">
+<div>
+    <div fxLayout="row">
+        <mat-form-field  appearance="outline" >
+            <mat-label i18n>First Name</mat-label>
+            <mat-icon matPrefix class="mat-icon-sm mb-2 mr-2 secondary-text-color">perm_identity</mat-icon>
+            <input matInput placeholder="First Name" formControlName="firstname">
+            <mat-error i18n *ngIf="form.controls.firstname.errors?.required">First Name is required</mat-error>            
+            <mat-error i18n *ngIf="form.controls.firstname.hasError('invalidalphabet')">Only Alphabets</mat-error>
+        </mat-form-field>
+        <mat-form-field  appearance="outline" >
+            <mat-label i18n>Last Name</mat-label>
+            <mat-icon matPrefix class="mat-icon-sm mb-2 mr-2 secondary-text-color">perm_identity</mat-icon>
+            <input matInput placeholder="Last Name" formControlName="lastname">
+            <mat-error i18n *ngIf="form.controls.lastname.errors?.required">Last Name is required</mat-error>      
+            <mat-error i18n *ngIf="form.controls.lastname.hasError('invalidalphabet')">Only Alphabets</mat-error>
+            <!-- <mat-hint>Last Name</mat-hint> -->
+        </mat-form-field>
+    </div>
+    <div fxLayout="row">
+    <mat-form-field  appearance="outline" >
+        <mat-label i18n>Email</mat-label>
+        <mat-icon matPrefix class="mat-icon-sm mb-2 mr-2 secondary-text-color">email</mat-icon>
+        <input matInput placeholder="Email" formControlName="email">
+        <mat-error i18n *ngIf="form.controls.email.errors?.required">Email is required</mat-error>
+        <mat-error i18n *ngIf="form.controls.email.errors?.required">Email is required</mat-error>
+        <mat-error  *ngIf="form.controls.email.hasError('invalidEmail')">Invalid email address</mat-error>
+        <!-- <mat-hint>Registered Email</mat-hint> -->
+    </mat-form-field>
+    </div>
+    <div fxLayout="row">
+        <div fxLayout="row">
+        <mat-form-field  appearance="outline" >
+            <mat-label i18n >Cell Phone</mat-label>
+
+            <mat-icon matPrefix class="mat-icon-sm mb-2 mr-2 secondary-text-color">smartphone</mat-icon>
+            <input matInput placeholder="Cell Phone" formControlName="cellphone" (focusin)="addPrefix($event)">
+            <mat-error i18n *ngIf="form.controls.cellphone.errors?.required">Cell Phone Number is required</mat-error>
+            <!-- <mat-error i18n *ngIf="form.controls.cellphone.hasError('invalidCellPhone')">Invalid Cell Phone Number</mat-error> -->
+            <!-- <mat-hint>Cell Phone Number</mat-hint> -->
+        </mat-form-field> 
+        <button mat-fab color="primary"  [disabled]="!btnOTP" aria-label="Example icon button with a delete icon" (click)="sendOTP();submitted=false">
+            <mat-label i18n>OTP</mat-label>
+          </button>
+          </div>
+        <mat-form-field  appearance="outline" >
+            <mat-label i18n >Verfication Code</mat-label>
+            <mat-icon matPrefix class="mat-icon-sm mb-2 mr-2 secondary-text-color">verified_user</mat-icon>
+            <input  mat-Badge="X" matBadgeColor="warn" matInput placeholder="Verification Code" formControlName="verificationcode" (blur)="onBlur($event)">
+            <!-- <mat-hint>Registered Email</mat-hint> -->
+        </mat-form-field>
+
+    </div>
+</div>
+
+<mat-divider vertical="true" inset="false"></mat-divider>
+<div>
+
+           <div fxLayout="row" >
+                <mat-form-field  appearance="outline" >
+                    <mat-label i18n>Date of Birth</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="dob">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
+                    <!-- <mat-error *ngIf="form.controls.dob.errors?.required">Date of Birth is required</mat-error> -->
+                    <!-- <mat-error *ngIf="form.controls.dob.hasError('invalidDate')">Invalid Date Format</mat-error> -->
+                    <mat-hint i18n>Date of Birth</mat-hint>
+                </mat-form-field>
+
+
+                <mat-form-field  appearance="outline" >
+                    <mat-label i18n>Gender</mat-label>
+                    <mat-icon matPrefix class="mat-icon-sm mb-2 mr-2 secondary-text-color">wc</mat-icon>
+                    <mat-select formControlName="gender">
+                      <mat-option>--</mat-option>
+                      <mat-option *ngFor="let gender of genders" [value]="gender">{{gender.name}}   </mat-option>
+                    </mat-select>
+                    <mat-hint i18n>Gender</mat-hint>
+                </mat-form-field>
+
+                </div>
+                <div fxLayout="row">
+                <mat-form-field  appearance="outline" >
+                    <mat-label i18n>Nationality</mat-label>
+                    <mat-icon matPrefix class="mat-icon-sm mb-2 mr-2 secondary-text-color">outlined_flag</mat-icon>
+                    <input matInput placeholder="nationality" formControlName="nationality">
+                    <mat-error i18n *ngIf="form.controls.email.errors?.required">Nationality is required</mat-error>
+                    <mat-hint i18n>Nationality</mat-hint>
+                </mat-form-field>
+            </div>  
+                <div fxLayout="row">
+                <mat-form-field appearance="outline">
+                    <mat-label i18n>Password</mat-label>
+                    <mat-icon matPrefix class="mat-icon-sm mb-2 mr-2 secondary-text-color">lock</mat-icon>
+                    <input matInput type="password" placeholder="Password" formControlName="password">
+                    <mat-error i18n *ngIf="form.controls.password.errors?.required">Password is required</mat-error>
+                    <mat-error i18n *ngIf="form.controls.password.hasError('minlength')">Password isn't long enough, minimum of 6 characters</mat-error>
+                    <mat-hint i18n>Login Password</mat-hint>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label i18n>Confirm Password</mat-label>
+                    <mat-icon matPrefix class="mat-icon-sm mb-2 mr-2 secondary-text-color">lock</mat-icon>
+                    <input matInput type="password" placeholder="Confirm Password" formControlName="confirmpassword">    
+                    <mat-error i18n *ngIf="form.controls.confirmpassword.errors?.required">Confirm Password is required</mat-error>
+                    <mat-error i18n *ngIf="form.controls.confirmpassword.hasError('mismatchedPasswords')">Passwords do not match</mat-error>
+                    <mat-hint i18n>Re-enter Password</mat-hint>
+                </mat-form-field>
+               </div>
+            </div>
+
+        </div>
+                <div fxLayout="row" fxLayoutAlign="center"  class="p-3">
+                    <button mat-raised-button color="primary" i18n (click)="loadClearForm($event)">Clear Form</button> 
+                    <button mat-raised-button color="primary" i18n class="loginBtn loginBtn--kibsons" type="submit">Register User</button> 
+                </div>     
+
+        </form>
+    </div>
+</mat-sidenav-container>

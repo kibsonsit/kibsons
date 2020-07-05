@@ -1,0 +1,34 @@
+
+<div class="product">
+    <div  class="kibimgbox" >
+        <div class="primary_image" >
+            <img  style="border-radius: 5px;"   src="{{myCartList?.StockImgLink}}">  <!-- [class.mat-elevation-z15]=true  -->
+        </div>
+</div>
+    <div class="products-name">{{myCartList?.StockDesc}}</div>
+    <div class="product-origin-kib">{{myCartList?.StockOrigin}}</div>
+   
+
+    <div class="product-title">
+      <span class="kib-price" *ngIf="myCartList?.StockOldPrice != 0" > {{myCartList?.DisplayRate |  number:'1.2-2'}} </span> 
+     <span *ngIf="myCartList?.StockOldPrice != 0"><s style="color: #a30b33;"><span class="strikeout">{{myCartList?.StockOldPrice |  number:'1.2-2'}}</span></s> / {{myCartList?.DisplayUnits}}</span>
+     <span *ngIf="myCartList?.StockOldPrice == 0">{{myCartList?.DisplayRate |  number:'1.2-2'}} / {{myCartList?.DisplayUnits}}</span>
+    </div>
+   
+    <div class="product-details product-desc-kib space-20">
+        {{myCartList?.StockDetail1}}
+    </div>
+
+    <div class="quantity-box" fxLayoutAlign="center center">      
+        <button mat-button class="btnminus btn-minus-text" (click)='SubQty(myCartList)'>-</button>
+        <p fxLayoutAlign="center center" class="qtyselection">{{myCartList?.StockCartQty}}</p>
+        <button mat-button class="btnplus btn-plus-text" (click)='AddQty(myCartList)'>+</button>
+    </div>
+    
+   
+    <div style="margin:  25px 0px;" >
+    <!-- <mat-divider></mat-divider> -->
+</div>
+
+</div>
+

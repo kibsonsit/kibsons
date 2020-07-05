@@ -1,0 +1,162 @@
+.cont{
+    color: #fff;
+    text-align: center;
+    img{
+        width: 130px;
+        height: 130px;
+        border-radius: 50%;
+    }
+    h1{
+        font-size: 36px;
+        font-weight: 400;
+        margin: 0;
+    } 
+    h4{
+        font-size: 16px;
+        font-weight: 300;
+        max-width: 580px;
+        text-align: center;
+        margin: 0 auto;
+    }
+    bg-image{
+        background-image: url("../../../assets/img/app/header-bg.png");     
+        background-blend-mode: overlay;
+        background-size: 300px; 
+    }
+  
+}
+
+
+
+body { padding: 2em; }
+
+
+
+
+/* Shared */
+.loginBtn {
+  box-sizing: border-box;
+  position: relative;
+  /* width: 13em;  - apply for fixed size */
+  margin: 0.2em;
+  padding: 0 15px 0 46px;
+  border: none;
+  text-align: left;
+  line-height: 34px;
+  white-space: nowrap;
+  border-radius: 0.2em;
+  font-size: 16px;
+  color: #FFF;
+}
+.loginBtn:before {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 34px;
+  height: 100%;
+}
+.loginBtn:focus {
+  outline: none;
+}
+.loginBtn:active {
+  box-shadow: inset 0 0 0 32px rgba(0,0,0,0.1);
+}
+
+
+/* Kibsons */
+.loginBtn--kibsons {
+    background-color: #0d2c6c;
+    background-image: linear-gradient(#0d2c6c, #0d2c6c);
+    /*font-family: "Helvetica neue", Helvetica Neue, Helvetica, Arial, sans-serif;*/
+    text-shadow: 0 -1px 0 #0d2c6c;
+  }
+  .loginBtn--kibsons:before {
+    border-right: black 1px solid;
+    background: url('../../../assets/img/login/kibsons.png');
+    background-size: cover;
+  }
+  .loginBtn--kibsons:hover,
+  .loginBtn--kibsons:focus {
+    background-color: #0d2c6c;
+    background-image: linear-gradient(#0d2c6c, #0d2c6c);
+  }
+
+
+/* Facebook */
+.loginBtn--facebook {
+  background-color: #4C69BA;
+  background-image: linear-gradient(#4C69BA, #3B55A0);
+  /*font-family: "Helvetica neue", Helvetica Neue, Helvetica, Arial, sans-serif;*/
+  text-shadow: 0 -1px 0 #354C8C;
+}
+.loginBtn--facebook:before {
+  border-right: black 1px solid;
+  background: url('../../../assets/img/login/facebook-icon.svg');
+  background-size: cover;
+}
+.loginBtn--facebook:hover,
+.loginBtn--facebook:focus {
+  background-color: #5B7BD5;
+  background-image: linear-gradient(#5B7BD5, #4864B1);
+}
+
+/* Google */
+.loginBtn--google {
+  font-size: 15px;
+  font-weight: bold;
+  background-color: aliceblue;
+  border: 2px solid black;
+  height: 40px;
+  color: black;
+  /*font-family: "Roboto", Roboto, arial, sans-serif;*/
+  // background: white;
+  // background-image: linear-gradient(#444, #444);
+  // text-shadow: 0 -1px 0 #354C8C;
+}
+.loginBtn--google:before {
+  border-right: black 1px solid;
+  background: url('../../../assets/img/login/google-icon.svg');
+  background-size: cover;
+}
+.loginBtn--google:hover,
+.loginBtn--google:focus {
+  background: white;
+}
+
+/* Twitter */
+.loginBtn--twitter {
+    /*font-family: "Roboto", Roboto, arial, sans-serif;*/
+    background: #00acee;
+    background-image: linear-gradient(#00acee, #00acee);
+    text-shadow: 0 -1px 0 #354C8C;
+  }
+  .loginBtn--twitter:before {
+    border-right: black 1px solid;
+    background: url('../../../assets/img/login/twitter-icon.svg');
+    background-size: cover;
+  }
+  .loginBtn--twitter:hover,
+  .loginBtn--twitter:focus {
+    background: #00acee;
+  }
+
+  .mat-form-field {
+    margin: 5px;
+  }
+
+  .wrapper{
+    display: flex;
+    width: 80%;
+    justify-content: space-between; 
+    }
+ 
+  .align-left {
+    float: left;
+    font-size: x-small;
+  }
+  .align-right {
+    float: right;
+    font-size: x-small;
+  } 

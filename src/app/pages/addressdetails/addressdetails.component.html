@@ -1,0 +1,152 @@
+<div fxLayout="row" fxLayoutAlign="center center" class="p-2">
+    <mat-card class="custom-card ">
+        <mat-card-header class="bg-primary p-2" fxLayoutAlign="space-between center">
+            <mat-card-title class="m-0">
+                <h2 i18n >Address Details</h2>
+            </mat-card-title>
+            <mat-icon>email</mat-icon>
+        </mat-card-header>
+        <mat-card-content class='p-2'>
+
+            <div fxLayout="row" fxLayoutAlign="space-between">
+            <form [formGroup]="form"  #addressDetails="ngForm"  class="mat-elevation-z6">
+             <div fxLayout="column wrap" class="mat-elevation p-2 m-2" >
+                <h1 mat-dialog-title i18n>Delivery Address</h1>
+                <div >
+                    
+                <mat-form-field fxFlex appearance="outline" >
+                    <mat-label>Address Title</mat-label>
+                    <mat-icon matPrefix class="mat-icon-sm mb-2 mr-2 secondary-text-color">email</mat-icon>
+                    <input matInput placeholder="Address Title"  name="addresstitle" formControlName="addresstitle" >
+                </mat-form-field>
+            </div>
+            <div class="mat-elevation-z6" style="width: 475px;">
+                <p>{{address}}</p>
+            </div>
+            <div>
+                <mat-form-field appearance="outline">
+                    <mat-label i18n>Emirates</mat-label>
+                    <mat-icon matPrefix class="mat-icon-sm mb-2 mr-2 secondary-text-color">account_balance</mat-icon>
+                    <input #autocounty matInput placeholder="County"matInput [matAutocomplete]="auto" name="county" formControlName="county"  type="text" >
+                   
+
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+            {{option}}
+          </mat-option>
+      </mat-autocomplete>
+
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label i18n>Area</mat-label>
+        <mat-icon matPrefix class="mat-icon-sm mb-2 mr-2 secondary-text-color">account_balance</mat-icon>
+        <input #autoarea matInput placeholder="Area"  [matAutocomplete]="auto1" name="area" formControlName="area"  type="text" >
+       
+
+<mat-autocomplete #auto1="matAutocomplete">
+<mat-option *ngFor="let option1 of filteredOptions1 | async" [value]="option1">
+{{option1}}
+</mat-option>
+</mat-autocomplete>
+
+</mat-form-field>
+
+
+                <!-- <mat-form-field fxFlex="50"  appearance="outline" >
+                    <mat-label>Area</mat-label>
+                    <mat-icon matPrefix class="mat-icon-sm mb-2 mr-2 secondary-text-color">group</mat-icon>
+                    <input matInput placeholder="Area" name="area"  formControlName="area"  >
+                    
+                </mat-form-field>  -->
+            </div>
+<div >
+                <mat-form-field fxFlex="50"  appearance="outline" >
+                    <mat-label i18n>Address 1</mat-label>
+                    <mat-icon matPrefix class="mat-icon-sm mb-2 mr-2 secondary-text-color">input</mat-icon>
+                    <input matInput placeholder="Address"  name="address1" formControlName="address1">
+                    <!-- <mat-hint>Cell Phone Number</mat-hint> -->
+                </mat-form-field> 
+                <mat-form-field fxFlex="50" appearance="outline" >
+                    <mat-label i18n>Address 2</mat-label>
+                    <mat-icon matPrefix class="mat-icon-sm mb-2 mr-2 secondary-text-color">input</mat-icon>
+                    <input matInput placeholder="Address" name="address2" formControlName="address2" >
+                    <!-- <mat-hint>Cell Phone Number</mat-hint> -->
+                </mat-form-field> 
+            </div>
+<div>
+                <mat-form-field fxFlex appearance="outline" >
+                    <mat-label i18n>Nearest Landmark</mat-label>
+                    <mat-icon matPrefix class="mat-icon-sm mb-2 mr-2 secondary-text-color">near_me</mat-icon>
+                    <input matInput placeholder="Landmark" name="landmark" formControlName="landmark" >
+                    <!-- <mat-hint>Cell Phone Number</mat-hint> -->
+                </mat-form-field> 
+            </div>
+            <div >
+
+                    <button i18n mat-mini-fab color="primary" matTooltip="Click here to Mark Location on MAP"(click)="openGoogleMapDialog()" tabindex="-1">
+                        <mat-icon matPrefix >location_on</mat-icon>
+                    </button>
+
+                <mat-form-field  appearance="outline" >
+                    <mat-label i18n>Latitude</mat-label>
+                    <mat-icon matPrefix class="mat-icon-sm mb-2 mr-2 secondary-text-color">pin_drop</mat-icon>
+                    <input matInput placeholder="Latitude" name="latitude" formControlName="latitude" >
+                    <!-- <mat-hint>Cell Phone Number</mat-hint> -->
+                </mat-form-field> 
+                <mat-form-field  appearance="outline" >
+                    <mat-label i18n>Longitude</mat-label>
+                    <mat-icon matPrefix class="mat-icon-sm mb-2 mr-2 secondary-text-color">pin_drop</mat-icon>
+                    <input matInput placeholder="Longitude" name="longitude" formControlName="longitude" >
+                    <!-- <mat-hint>Cell Phone Number</mat-hint> -->
+                </mat-form-field> 
+            </div>
+            <div fxLayoutAlign="center">
+            <button i18n mat-raised-button class="mat-elevation m-2" matTooltip="Click to Clear the from" (click)="resetForm();submitted = false" color="warn" >Clear</button> 
+            <button i18n mat-raised-button class="mat-elevation m-2" [disabled]="!AddDisabled" matTooltip="Click to Add the Data" (click)="addaddressdetails(addressDetails);submitted = false" color="primary">Add</button> 
+            <button i18n mat-raised-button class="mat-elevation m-2" [disabled]="!UpdateDisabled" matTooltip="Click to Update the Data" (click)="updateaddressdetails(addressDetails);submitted = false" color="primary">Update</button> 
+        </div>
+
+            </div>
+        </form>
+
+            <mat-divider [vertical]="true"></mat-divider>
+            <div class="mat-elevation p-2 m-2" fxLayout="column wrap" >
+                <h1 i18n mat-dialog-title>Address List </h1>
+                <mat-table class="mat-elevation-z8 p-2" [dataSource]="dsaddressdetails">
+                                                                        <ng-container matColumnDef="slno">
+                                                                            <mat-header-cell i18n *matHeaderCellDef>Sl. No</mat-header-cell>
+                                                                            <mat-cell *matCellDef="let element">{{element.slno}} </mat-cell>
+                                                                        </ng-container>
+                                                                        <ng-container matColumnDef="addresstitle">
+                                                                            <mat-header-cell i18n *matHeaderCellDef>Address Title</mat-header-cell>
+                                                                            <mat-cell *matCellDef="let element">{{element.addressTitle}} </mat-cell>
+                                                                        </ng-container>
+                                                                        <ng-container matColumnDef="county">
+                                                                            <mat-header-cell i18n *matHeaderCellDef>County</mat-header-cell>
+                                                                            <mat-cell  *matCellDef="let element">{{element.county}}</mat-cell>
+                                                                        </ng-container>
+                                                                        <ng-container matColumnDef="area">
+                                                                            <mat-header-cell i18n *matHeaderCellDef>Area</mat-header-cell>
+                                                                            <mat-cell *matCellDef="let element">{{element.area}}</mat-cell>
+                                                                        </ng-container>
+                                                                        <ng-container matColumnDef="address">
+                                                                            <mat-header-cell i18n *matHeaderCellDef>Address</mat-header-cell>
+                                                                            <mat-cell  *matCellDef="let element">{{element.address1}} <br> {{element.address2}}</mat-cell>
+                                                                        </ng-container>
+                                                                        <ng-container matColumnDef="landmark">
+                                                                            <mat-header-cell i18n *matHeaderCellDef>Landmark</mat-header-cell>
+                                                                            <mat-cell *matCellDef="let element">{{element.landMark}}</mat-cell>
+                                                                        </ng-container>
+                                                                        <mat-header-row
+                                                                            *matHeaderRowDef="addressdetailcolumns"></mat-header-row>
+                                                                        <mat-row class="element-row" *matRowDef="let row; columns: addressdetailcolumns;" (click)="getselected(row); UpdateDisabled=true; AddDisabled=false;">
+                                                                        </mat-row>
+                                                                    </mat-table></div>
+
+        </div>
+        </mat-card-content>
+    </mat-card>
+</div>
+
+

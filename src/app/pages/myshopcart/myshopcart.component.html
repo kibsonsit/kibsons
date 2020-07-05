@@ -1,0 +1,181 @@
+
+<div style="max-width: 1050px; margin: auto;"  fxLayout="column" >
+<div fxFlex>
+<div  class="products"   *ngFor="let myshopdata of myShopCartArray">  <!-- style="max-width: 1050px; margin: auto;" -->
+    <app-myitems [myCartList] = "myshopdata"></app-myitems>
+</div> 
+</div>
+<form [formGroup]="form"  #checkoutForm="ngForm" (ngSubmit)="openConfirmOrder(checkoutForm.value)">
+  <mat-divider style="margin-bottom: 10px;"> </mat-divider>
+<div  fxLayout="row" *ngIf=myShopCartArray >
+  
+<div fxFlex="50" >
+   
+
+    <span class="title-brand">
+        Delivery Address
+    </span>
+    <br>
+    <div style="margin-left: 20px;">
+    <!-- <span >
+        Choose where to deliver?
+    </span>
+    <br> -->
+    <mat-form-field style="width: 450px; " appearance="outline">
+      <mat-label>Choose where to deliver?</mat-label>
+    <mat-select  appearance="outline" [ngModel]="selectedDeviceObj" (ngModelChange)="onChangeaddress($event)" formControlName="addressTitle"  required >
+
+        <mat-option *ngFor="let addressDetail of addressDetails" [value]="addressDetail.addressTitle" >
+          {{addressDetail.addressTitle +" ~ "+ addressDetail.address1 +", "+ addressDetail.address2 
+          +", "+ addressDetail.landmark +", "+ addressDetail.area +", "+ addressDetail.county}}
+        </mat-option>
+      </mat-select>
+      <mat-error i18n *ngIf="form.controls.addressTitle.errors?.required">Delivery Address is required</mat-error>
+    </mat-form-field>
+  </div>
+<div>
+  
+    <span class="title-brand">
+        Delivery Date/Time
+    </span>
+    <br>
+<div fxLayout="row" style="margin-left: 20px;">
+    <div fxFlex="50">
+    <!-- <span >
+        Deliver Date?
+    </span>
+    <br> -->
+    <mat-form-field  appearance="outline" >
+      <mat-label>Deliver Date?</mat-label>
+    <mat-select [ngModel]="selectedDeviceObj" (ngModelChange)="onChangeaddress($event)" formControlName="deliverDate" required>
+        <mat-option *ngFor="let deliverdate of deliverdates" [value]="deliverdate.value">
+          {{deliverdate.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+    <div fxFlex="50">
+      <!-- <span >
+        Deliver Time?
+    </span>
+    <br> -->
+    <mat-form-field appearance="outline">
+      <mat-label>Deliver Time?</mat-label>
+    <mat-select [ngModel]="selectedDeviceObj"  (ngModelChange)="onChangeaddress($event)"  formControlName="deliverTime" required>
+        <mat-option *ngFor="let delivertime of delivertimes" [value]="delivertime.value">
+          {{delivertime.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>
+</div>
+<div  >
+    <span class="title-brand">
+        Vouchers/Discounts  
+    </span>
+    <br>
+    <div style="margin-left: 20px;" fxLayout="row">
+        <div fxFlex="50">
+        <!-- <span >
+            Discount Code?
+        </span>
+        <br> -->
+        <mat-form-field  appearance="outline" >
+          <mat-label i18n>Discount Code?</mat-label>
+          <input matInput placeholder="Enter Discount Code (if any)" formControlName="discountCode">
+        </mat-form-field>
+      </div>
+        <div fxFlex="50">
+          <!-- <span >
+            Creditnote Voucher
+        </span>
+        <br> -->
+        <mat-form-field appearance="outline">
+          <mat-label>Creditnote Voucher ?</mat-label>
+        <mat-select [ngModel]="selectedDeviceObj"  (ngModelChange)="onChangeaddress($event)"  formControlName="creditNote" >
+            <mat-option *ngFor="let creditnote of creditnotes" [value]="creditnote.value">
+              {{creditnote.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+</div>
+<div>
+<span style="color: #0E2B6C;">Please note discount will apply only on fruit, vegetable and meat products.</span>
+<span style="font-size: larger;color:red">*</span>
+</div>
+<div>
+<span style="color: #0E2B6C;"> Loyalty/Referral points do not apply when discount codes are used</span>
+<span style="font-size: larger;color: red">*</span>
+</div>
+</div>
+<mat-divider vertical > </mat-divider>
+<div fxFlex="50" style="margin-left: 10px;" >
+  <span class="title-brand">
+    Redeem Loyalty Points
+</span>
+<br>
+<div style="margin-left: 20px;">
+<span >
+  Current loyalty balance is 0, (worth of AED 0.00 )
+</span>
+<br>
+<span>
+  <a>Click to view details</a>
+</span>
+<br>
+<mat-form-field style="width: 450px; " appearance="outline">
+  <mat-label>Enter Loyalty points to redeem</mat-label>
+  <input matInput placeholder="No of Loyalty Points" formControlName="loyaltyPoints">
+</mat-form-field>
+<div >
+  <span >
+    Your Contact Number
+  </span>
+  <br>
+  <mat-form-field  appearance="outline" >
+    <mat-label i18n>Phone Number</mat-label>
+    <input matInput placeholder="Phone Number" formControlName="phoneNumber">
+  </mat-form-field>
+  <br>
+  <span>
+    <a>Want to update? click here</a>
+  </span>
+  <br>
+<span>
+  We support Gulf for Good and the work they do for children around the world. Your donation can make a big difference – thank you! 
+  </span>
+  <br>
+  <mat-form-field  appearance="outline" >
+    <mat-label i18n>Choose Your Amount</mat-label>
+    <input matInput placeholder="Enter Amount in AED" formControlName="donationAmount">
+  </mat-form-field>
+  <br>
+  <span>
+    When you make a donation, you are supporting 5 charity projects in 2020. These are taking place in Nepal, Uganda, Peru, Tanzania and Lebanon. The aim is to build schools and renovate water treatment plants. All to increase a better and healthier life.
+  </span>
+  <br>
+  <span>
+    Want to know more? Read about these charity projects <a>here</a>.
+  </span>
+  <br>
+  <br>
+  <span>
+    IACAD License No. 2972
+  </span>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div fxLayout="row" fxLayoutAlign="center center" class="mat-elevation p-3"  *ngIf=myShopCartArray>
+  <button i18n mat-raised-button color="primary" type="submit" >PROCEED TO CHECKOUT</button>
+</div>
+</form>
+</div>
+
+

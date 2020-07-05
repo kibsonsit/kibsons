@@ -1,0 +1,52 @@
+<div style="max-width: 1050px; margin: auto;">
+    <div fxLayout="row">
+        <div fxFlex="25" fxLayoutAlign="center center" style="margin: 15px 15px 15px 0px; border: 1px;border-style: solid; color: lightgrey;">
+            <button mat-mini-fab style="background-color: green;margin:5px" (click)="openShoppingCart()">01</button>
+        <span class="status-text">SHOPPING CART</span>
+        </div>
+        <div fxFlex="25" fxLayoutAlign="center center" style=" margin: 15px;border: 1px;border-style: solid; color: lightgrey;">
+            <button mat-mini-fab style="background-color: green;margin:5px" (click)="openConfirmOrder()">02</button>
+            <span class="status-text">CONFIRM ORDER</span>
+        </div>
+        <div fxFlex="25" fxLayoutAlign="center center" style="margin: 15px;border: 1px;border-style: solid; color: lightgrey;">
+            <button mat-mini-fab style="background-color: green;margin:5px" >03</button>
+            <span class="status-text" >PAYMENT</span>
+        </div>
+        <div fxFlex="25" fxLayoutAlign="center center" style="margin: 15px 0px 15px 15px;border: 1px;border-style: solid; color: lightgrey;">
+            <button mat-mini-fab style="margin:5px" disabled>04</button>
+            <span class="status-text" >ORDER COMPLETE</span>
+        </div>
+    </div>
+    <div fxLayout="row"  fxLayoutAlign="center center">
+        <div fxFlex="50" style="margin: 5px 5px 5px 0px;padding: 15px; border: 1px;border-style: solid; color: lightgrey;"  >
+            <div >
+                <h3 class="confirm-title"   >PAYMENT DETAILS :</h3>
+            </div>
+<div style="margin: 20px;">
+            <div class="total-item" >
+                <span fxFlex="25">Currency : </span>                  
+                <span style="font-weight: bold;" fxFlex="25">AED</span>
+            </div>
+            <div class="total-item" >
+                <span  fxFlex="25">Amount : </span>                  
+                <span style="font-weight: bold;" fxFlex="25">{{CartAmount |  number:'1.2-2'}}</span>
+            </div>
+            <div class="total-item"  >
+                <span fxFlex="25">Order No : </span>                  
+                <span style="font-weight: bold;" fxFlex="25">{{OrderNo}}</span>
+            </div>
+            <div class="total-item" >
+                <span fxFlex="25">Payment Status : </span>                  
+                <span style="font-weight: bold;" fxFlex="25">to be Processed</span>
+            </div>
+            <div class="status-text">
+            <mat-checkbox class="example-margin" fxLayoutAlign="center center" [(ngModel)]="checked"><a>I Agree and Accept the Terms & Conditions</a></mat-checkbox>
+        </div>
+        <div fxLayoutAlign="center center" >
+            <button i18n mat-raised-button style="margin: 10px;" color="primary" (click)="openOnlinePayment()">Proceed Online Payment with New Card</button> 
+            <button i18n mat-raised-button style="margin: 10px;" color="warn" (click)="openCancelPayment()">Cancel</button> 
+        </div>
+        </div>
+        </div>
+    </div>
+</div>  

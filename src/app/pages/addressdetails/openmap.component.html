@@ -1,0 +1,39 @@
+<div fxLayout="column" class="mat-elevation-z8">
+  <mat-card class="custom-card ">
+    <mat-card-header class="bg-primary p-2" fxLayoutAlign="space-between center">
+      <mat-card-title class="m-0">
+        <h2 i18n >Search / Select Your Location</h2>
+      </mat-card-title>
+      <mat-icon>map</mat-icon>
+    </mat-card-header>
+    <mat-card-content class='p-2'>
+      <div>
+        <label i18n>Enter address </label>
+        <input type="text" class="form-control" (keydown.enter)="$event.preventDefault()"
+          placeholder="Search Nearest Location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" #search>
+      </div>
+      <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
+        <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true"
+          (dragEnd)="markerDragEnd($event)"></agm-marker>
+      </agm-map>
+      <h5 i18n>Address: <b>{{address}}</b></h5>
+      <div fxLayout="row">
+        <div i18n>Latitude: <b>{{latitude}}</b>, Longitude: <b>{{longitude}}</b></div>
+      </div>
+      <div 
+      fxLayout="row" fxLayoutAlign="center"  class="p-3">
+        <button mat-raised-button color="primary" (click)="CloseMapDialog()"   >Done</button> 
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<!-- 
+<agm-map 
+[latitude]="latitude" 
+[longitude]="longitude" 
+[zoom]="zoom" >
+  <agm-marker 
+  [latitude]="latitude" 
+  [longitude]="longitude"></agm-marker>
+</agm-map> -->

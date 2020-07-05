@@ -1,0 +1,60 @@
+<div fxLayout="column" class="mat-elevation-z8">
+    <mat-card class="custom-card " >
+        <mat-card-header class="bg-primary p-2" fxLayoutAlign="space-between center">
+            <mat-card-title class="m-0">
+                <h2 i18n>Reset Password</h2>
+            </mat-card-title>
+            <mat-icon>business</mat-icon>
+        </mat-card-header>
+        <mat-card-content class='p-2'>
+            <h1 i18n mat-dialog-title>Hi {{data.name}}</h1>
+            <div mat-dialog-content>
+                <form [formGroup]="form"
+                                  #forgotPassForm="ngForm"
+                                  >
+            <div>
+                <p i18n>We will send you a OTP, where do you want to receive ?</p>
+                <mat-radio-group fxLayoutAlign="start center" formControlName="sendOTPto"  [(ngModel)]="sendOTPto"
+                 fxLayout="column" >
+                    <mat-radio-button i18n style="font-size: 20px; margin: 5px 0 0 0" [checked]="toEmail" value="toEmail">to Email</mat-radio-button>
+                    <mat-radio-button i18n style="font-size: 20px; margin: 5px 0 0 0" [checked]="toMobile" value="toMobile">to Mobile</mat-radio-button>
+                </mat-radio-group>
+                <div *ngIf="sendOTPto" fxLayoutAlign="end center">
+                    <button i18n mat-raised-button color="primary" class="loginBtn loginBtn--kibsons" 
+                    (click)="onNoClick(forgotPassForm)" tabindex="-1">Send OTP</button>
+                </div>
+                <mat-form-field *ngIf="verifyshow" appearance="outline"  >
+                    <mat-label i18n>Verfication Code</mat-label>
+                    <mat-icon matPrefix class="mat-icon-sm mb-2 mr-2 secondary-text-color">verified_user</mat-icon>
+                    <input disabled  mat-Badge="X" matBadgeColor="warn" matInput placeholder="Verification Code" formControlName="verificationcode" (blur)="onBlur($event)">
+                </mat-form-field>
+            </div>
+            
+ 
+        <div *ngIf="Passwordshow" fxLayout="column">
+        <mat-form-field appearance="outline">
+            <mat-label i18n>Password</mat-label>
+            <input matInput  [type]="resetpasswordhide ? 'password' : 'text'" placeholder="Password" formControlName="password">
+            <mat-icon matPrefix class="mat-icon-sm mb-2 mr-2 secondary-text-color">lock</mat-icon>
+            <mat-icon matSuffix (click)="resetpasswordhide = !resetpasswordhide">{{resetpasswordhide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            <mat-error i18n *ngIf="form.controls.password.errors?.required">Password is required</mat-error>
+            <mat-error i18n *ngIf="form.controls.password.hasError('minlength')">Password isn't long enough, minimum of 6 characters</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label i18n>Confirm Password</mat-label>
+            <input matInput  [type]="resetconfirmhide ? 'password' : 'text'" placeholder="Confirm Password" formControlName="confirmpassword">    
+            <mat-icon matPrefix class="mat-icon-sm mb-2 mr-2 secondary-text-color">lock</mat-icon>
+            <mat-icon matSuffix (click)="resetconfirmhide = !resetconfirmhide">{{resetconfirmhide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            <mat-error i18n *ngIf="form.controls.confirmpassword.errors?.required">Confirm Password is required</mat-error>
+            <mat-error i18n *ngIf="form.controls.confirmpassword.hasError('mismatchedPasswords')">Passwords do not match</mat-error>
+        </mat-form-field>
+       </div>
+
+
+            </form>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>
+
+

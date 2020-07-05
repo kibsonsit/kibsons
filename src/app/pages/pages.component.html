@@ -1,0 +1,323 @@
+<div id="main"  perfectScrollbar (psScrollY)="onPsScrollY($event)" class="h-100">
+  <header class="header">  
+  <mat-toolbar class="top-toolbar" style="background: #0d2c6c;"  [class.mat-elevation-z]="settings.fixedHeader">
+    <div fxLayout="row" fxLayoutAlign="center" fxFlex>
+      <div class="kib-top-header" fxLayoutAlign="center center">
+        <div>
+          <div class="free-delivery" fxLayout="row wrap">
+            <img
+              src="assets/img/KB_icons_headerfooter_0014_W_delivery.png"
+            />
+            <p i18n >FREE SAME DAY DELIVERY</p>
+          </div>
+          <div class="callus" fxLayout="row wrap">
+            <img
+              style="display: inline;"
+              
+              src="assets/img/KB_icons_headerfooter_0002_W_phone.png"
+            />
+            <p i18n >800KIBSONS</p>
+          </div>
+          <div class="social-icons2" fxLayout="row wrap">
+            <div>
+            <a
+              href="https://www.facebook.com/kibsons/"
+              title="Like our Facebook Page"
+              target="_blank"
+            >
+              <img  
+                src="assets/img/KB_icons_headerfooter_0008_W_facebook.png"
+              />
+            </a>
+            <a
+              href="https://www.instagram.com/kibsons/"
+              title="Follow us in Instagram"
+              target="_blank"
+            >
+              <img 
+                src="assets/img/KB_icons_headerfooter_0006_W_instagram.png"
+              />
+            </a>
+          </div>
+            <!-- <div>
+            <mat-menu #languageMenu="matMenu">
+              <ng-template matMenuContent>
+                <button style="color: #0d2c6c;font-family: Kibfonts;" mat-menu-item (click)="ChangeLang('ar')">العربية</button>
+                <button style="color: #0d2c6c;font-family: Kibfonts;" mat-menu-item (click)="ChangeLang('en')">ENGLISH</button>
+              </ng-template>
+            </mat-menu> 
+            <p>
+            <button mat-icon-button style="font-family: Kibfonts;" [matMenuTriggerFor]="languageMenu">LANGUAGE</button>   
+          </p>    
+        </div> -->
+            <div style="margin: auto;" >
+              <a  href="/ar/" >العربية</a>
+            </div>
+            <div style="margin: auto;" >
+              <a  href="/en/">ENGLISH</a>
+            </div>
+
+          </div>
+          <div class="top-login" fxLayout="row wrap" *ngIf="!mnuMyAccount">
+            <img src="assets/img/KB_icons_headerfooter_0016_W_account.png"/>
+            <mat-menu #appMenu="matMenu" >
+              <ng-template matMenuContent>
+                <button i18n style="color: #0d2c6c;font-family: Kibfonts;" mat-menu-item (click)="openLogin()">LOGIN</button>
+                <button i18n style="color: #0d2c6c;font-family: Kibfonts;" mat-menu-item (click)="openRegister()">REGISTER</button>
+              </ng-template>
+            </mat-menu> 
+            <p>
+            <button i18n  mat-icon-button style="font-family: Kibfonts;" [matMenuTriggerFor]="appMenu">LOGIN/REGISTER</button>   
+          </p>    
+          </div>
+          <div class="top-login" fxLayout="row wrap" *ngIf="mnuMyAccount">
+            <img style="border-radius: 50%;" src={{myImage}}/>
+            <p>
+              <span  style="font-size: smaller;">Hi {{myUserName}} , </span>
+            </p>
+            <br>
+            <p>
+              <a i18n style="font-family: Kibfonts;" (click)="logoutmyAccount()"> LOGOUT</a>
+            </p>    
+          </div>
+ 
+          <div class="del-fresh-icon" fxLayout="row wrap">
+            <img src="assets/img/en-deliveredFres.jpg" />
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </mat-toolbar>
+
+  <div style="max-width: 1050px; margin: auto; " >
+   
+    <div fxLayoutAlign="center" class="pt-2">
+      <div fxLayout="row">
+        <img
+          src="assets/img/logo.png"
+          style="height: 80px; width: auto;"
+          class="animated-logo"
+        />
+      </div>
+      <div fxLayout="row" fxLayoutAlign="center" class="p-2" >
+          <div  >
+
+          <mat-form-field style="width: 500px;" appearance="outline">
+            <form [formGroup]="form"  #productSeach="ngForm"  >
+            <input #searchKibsons style="font-size:18px; color: #0d2c6c;"  matInput placeholder="Search in Kibsons.com ..."matInput [matAutocomplete]="auto" name="SearchFieldName" formControlName="SearchFieldName"  type="text" >
+      <mat-autocomplete autoActiveFirstOption  #auto="matAutocomplete">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+            {{option}}
+          </mat-option>
+      </mat-autocomplete>
+</form>
+          </mat-form-field>
+        </div>
+        <div fxLayoutAlign="center" class="pt-1">
+          <button style="background-color: #0d2c6c;height: 55px;" mat-flat-button color="warn">
+            <mat-icon>search</mat-icon>
+          </button>     
+        </div>      
+
+        <div  fxLayout="center center">
+          
+          <div  class="my-cart-new p-2">
+          <p >AED {{this.CartTotalAmount  |  number:'1.2-2' }}</p>
+          <p *ngIf="this.TotalDiscAmount != this.CartTotalAmount">AED <s style="color: #a30b33;"><span style="color: #0d2c6c;" >{{this.TotalDiscAmount  |  number:'1.2-2' }}</span></s></p>
+          <p class="strikeout"></p>
+        </div> 
+        <div class="p-2">
+          <button mat-icon-button color="primary" (click)='openmyshopcart()'>
+            <img class="favimg" src="assets/images/KB_icons_headerfooter_0009_B_cart.png">
+            <div class="cartcount">
+              <span>{{this.CartTotalCount}}</span>
+            </div>
+            
+          </button>
+        </div>
+        <div class="p-2" >
+          <button mat-icon-button color="primary" (click)='openmywishlist()'>
+           <img class="favimg"  src="assets/images/KB_icons_headerfooter_B_heart.png">
+           <div class="favcount">
+            <span>{{this.TotalFavCount}}</span>
+          </div>
+          </button>
+        </div>
+        </div>
+      </div>
+    </div>
+      <div fxLayoutAlign="end center">
+        <app-horizontal-menu [menuParentId]="0"> </app-horizontal-menu>
+      </div>
+  </div>
+  
+</header>
+
+     <div  style="padding-top: 200px;">
+      <router-outlet></router-outlet> 
+    </div>
+ 
+
+ 
+
+  <div #backToTop fxLayout="row" fxLayoutAlign="center center" class="back-to-top" (click)="scrollToTop()">
+    <mat-icon>arrow_upward</mat-icon>
+</div>
+<mat-toolbar  style="background-color:#DDD4C9;height: max-content;" >
+  <div class="kib-footer" style="width: 1050px;margin: auto;">
+  <div class="footer-tb">
+    <div class="footer-tb-abs">
+    <div class="sm-box"> 
+      <img src="/assets/images/icon-value.png">
+      <p>EASY<br>PAYMENT</p>
+    </div>
+    <div class="sm-box">
+      <img src="/assets/images/icon-payment.png">
+      <p>GUARANTEED <br>SAVINGS </p>
+    </div>
+    <div class="sm-box">
+      <img src="/assets/images/icon-delivery.png">
+      <p>FREE <br>DELIVERY </p>
+    </div>
+    <div class="sm-box">
+      <img src="/assets/images/icon-guarentee.png">
+      <p>QUALITY <br>GUARANTEE </p>
+    </div>
+    <div class="sm-box">
+      <img src="/assets/images/icon-reward.png">
+      <p>EARN <br>REAL <br>REWARDS </p>
+    </div>
+    
+  </div>
+</div>
+<div >
+    <div fxFlex="20%">
+      <h3>
+        FOLLOW US
+      </h3>
+      <div class="footer-sm-icon" >
+        <a href="https://www.instagram.com/kibsons/" title="Follow us in Instagram" target="_blank"><img color="red" src="assets/img/KB_icons_headerfooter_0006_W_instagram.png"></a>
+        <p>@Kibsons</p>
+      </div>
+      <div class="footer-sm-icon" >
+        <a href="https://www.facebook.com/kibsons/" title="Follow us in Facebook" target="_blank"><img src="assets/img/KB_icons_headerfooter_0008_W_facebook.png"> </a>
+        <p>@Kibsons</p>
+    </div>
+    </div>
+      <div fxFlex="30%">
+        <h3>
+          CONTACT US
+        </h3>
+        <div class="footer-sm-icon" >
+          <mat-icon style="color: #0d2c6c;">phone</mat-icon>
+          <p>800 KIBSONS (800 5427667)</p>
+        </div>
+        <div class="footer-sm-icon" style="vertical-align: middle;" >
+          <mat-icon style="color: #0d2c6c;">email</mat-icon>
+          <p>customercare@kibsons.com</p>
+      </div>
+      <div class="footer-sm-icon" >
+        <mat-icon style="color: #0d2c6c;">location_on</mat-icon>
+        <p>Shop 59, Wholesale building - 2, Central Fruit & Vegetable Market, Aweer, Dubai</p>
+    </div>
+
+    </div>
+  </div>
+</div>
+  </mat-toolbar>
+
+
+  <mat-toolbar  style="background-color:#0d2c6c;height:400px;"  [class.full-width]="!showSidenav">  <!--  class="footer" style="background: #0d2c6c;"  -->
+    <!-- <a i18n
+      mat-raised-button
+      color="warn"
+      href="https://www.kibsons.com"
+      target="_blank"
+    >
+      <mat-icon  class="mx-2">shopping_cart</mat-icon>Download Kibsons Mobile
+      Apps
+    </a> -->
+  <div  style="width: 1050px;margin: auto;">    
+    <div class="footer-blue">
+      <div fxFlex="35%" style="margin-right:15px" >
+      <h2> PREMIUM PRODUCT<br>
+        DELIVERED FOR FREE<br>
+        ANYWHERE IN UAE        
+      </h2>
+      <div class="red-border-bottom"></div>
+      <div>
+      <p>
+        With 35 years of experience importing superior quality fresh produce from around the world, the Kibsons range is the choice of local airlines, supermarkets, restaurants and five-star hotels.
+      </p>
+    </div>
+      </div>
+      <div style="margin-left: 15px;" fxFlex="65%">
+      <div fxFlex="33.3%"  style="margin-left:5px"> 
+        <img src='../../assets/images/KB_account.png'/>
+        <h4>MY ACCOUNT</h4>
+        <div>
+         <p><a>My Orders</a></p> 
+         <p><a>Shopping Lists</a></p> 
+          <p><a>Account Details</a></p>
+          <p><a>Refer a Friend</a></p>
+          <p><a>Loyalty Points</a></p>
+        </div>
+      </div>
+  <div fxFlex="33.3%"   style="margin:5px"> 
+    <img src='../../assets/images/KB_account.png'/>
+    <h4>HOME DELIVERY</h4>
+    <div>
+     <p><a>How it Works</a></p> 
+     <p><a>Free Delivery</a></p> 
+      <p><a>FAQ</a></p>
+    </div>
+</div>
+<div fxFlex="33.3%"   style="margin:5px"> 
+  <img src='../../assets/images/KB_account.png'/>
+  <h4>ABOUT KIBSONS</h4>
+  <div>
+   <p><a>Our History</a></p> 
+   <p><a>Blog</a></p> 
+    <p><a>Social Responsibility</a></p>
+    <p><a>Refer a Friend</a></p>
+    <p><a>Loyalty Points</a></p>
+  </div>
+</div>
+</div>
+      <div color="primary">
+      
+      </div>
+     <div color="warn">
+      
+      </div>
+    </div>
+    <div class="footer-copyright"  >
+    <div fxFlex="column" >
+      <p fxLayoutAlign="start center" >Copyright © 2018 Kibsons International LLC. All rights reserved Terms & Conditions | Classic View</p>
+    </div>
+    <div fxFlex="column">
+      <p fxLayoutAlign="center center">Terms & Conditions</p>
+    </div>
+    <div fxFlex="column" >
+            <p fxLayoutAlign="end center">LANGUAGE: English, Arabic | CURRENCY: UAE AED</p>
+    </div>
+    </div>
+  </div>
+  </mat-toolbar>
+</div>
+
+
+
+ <!-- <div class="catimg"  fxLayoutAlign="center center">
+        <img src="../../assets/img/catagories/en-h.png">
+        <img src="../../assets/img/catagories/en-f.png">
+        <img src="../../assets/img/catagories/en-v.png">
+        <img src="../../assets/img/catagories/en-s.png">
+        <img src="../../assets/img/catagories/en-m.png">
+        <img src="../../assets/img/catagories/en-b.png">
+        <img src="../../assets/img/catagories/en-d.png">
+        <img src="../../assets/img/catagories/en-p.png">
+        <img src="../../assets/img/catagories/en-j.png">
+        <imgsrc="../../assets/img/catagories/en-g.png">
+      </div> -->

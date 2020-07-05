@@ -1,0 +1,156 @@
+<div style="max-width: 1050px; margin: auto;">
+   
+<div fxLayout="row">
+    <div fxFlex="25" fxLayoutAlign="center center" style="margin: 15px 15px 15px 0px; border: 1px;border-style: solid; color: lightgrey;">
+        <button mat-mini-fab style="background-color: green;margin:5px" (click)="openShoppingCart()">01</button>
+    <span class="status-text">SHOPPING CART</span>
+    </div>
+    <div fxFlex="25" fxLayoutAlign="center center" style=" margin: 15px;border: 1px;border-style: solid; color: lightgrey;">
+        <button mat-mini-fab style="background-color: green;margin:5px">02</button>
+        <span class="status-text">CONFIRM ORDER</span>
+    </div>
+    <div fxFlex="25" fxLayoutAlign="center center" style="margin: 15px;border: 1px;border-style: solid; color: lightgrey;">
+        <button mat-mini-fab style="margin:5px" disabled>03</button>
+        <span class="status-text" >PAYMENT</span>
+    </div>
+    <div fxFlex="25" fxLayoutAlign="center center" style="margin: 15px 0px 15px 15px;border: 1px;border-style: solid; color: lightgrey;">
+        <button mat-mini-fab style="margin:5px" disabled>04</button>
+        <span class="status-text" >ORDER COMPLETE</span>
+    </div>
+</div>
+<form [formGroup]="form"  #confirmOrderForm="ngForm" (ngSubmit)="openConfirmOrder(confirmOrderForm.value)">
+<div fxLayout="row">
+    <div fxFlex="50" >
+        <div style="margin: 5px 5px 5px 0px;padding: 15px; border: 1px;border-style: solid; color: lightgrey;">
+            <div fxLayout="row">
+                <h3 class="confirm-title">CART TOTAL :</h3>
+            </div>
+            <div class="total-item" >
+                    <span fxFlex="50" fxLayoutAlign="start center" >Gross Amount</span>
+                    <span fxFlex="50" fxLayoutAlign="end center">{{GrossAmt |  number:'1.2-2'}}</span>
+            </div>
+            <div class="total-item">
+                <span fxFlex="50" fxLayoutAlign="start center" style="color: red;" >MY FIRST ORDER</span>
+                <span fxFlex="50" fxLayoutAlign="end center">{{MyFirstOrderAmt |  number:'1.2-2'}}</span>
+            </div>
+            <div class="total-item">
+                <span fxFlex="50" fxLayoutAlign="start center" >Voucher</span>
+                <span fxFlex="50" fxLayoutAlign="end center">{{VoucherAmt |  number:'1.2-2'}}</span>
+            </div>
+            <div class="total-item">
+                <span fxFlex="50" fxLayoutAlign="start center">Promotion</span>
+                <span fxFlex="50" fxLayoutAlign="end center">{{PromotionAmt |  number:'1.2-2'}}</span>
+            </div>
+            <div class="total-item" style="font-weight: bold;">
+                <span fxFlex="50" fxLayoutAlign="start center" >Net Amount</span>
+                <span fxFlex="50" fxLayoutAlign="end center">{{NetAmt |  number:'1.2-2'}}</span>
+            </div>
+            <div class="total-item" style="font-weight: bold;">
+                <span fxFlex="50"  fxLayoutAlign="start center">Available Balance</span>
+                <span fxFlex="50" fxLayoutAlign="end center">{{AvailbleBalanceAmt |  number:'1.2-2'}}</span>
+            </div>
+            <div class="total-item" style="font-weight: bold;">
+                <button i18n mat-raised-button color="primary" (click)="openConfirmOrder()">View Order Items</button>
+            </div>
+        </div>
+
+        <div style="margin: 5px 5px 5px 0px;padding: 15px; border: 1px;border-style: solid; color: lightgrey;">
+            <div fxLayout="row">
+                <h3 class="confirm-title">PAYMENT :</h3>
+            </div>
+            <div class="total-item" fxLayoutAlign="start center">
+                <mat-radio-group [(ngModel)]="PayNow" fxLayout="column" formControlName="PayNow"  >
+                   <mat-radio-button i18n  checked [value]="1">
+                        Pay Now (AED {{NetAmt |  number:'1.2-2'}}) <img src="assets/images/payment.png">
+                    </mat-radio-button>
+               </mat-radio-group>
+            </div>
+        </div>        
+    </div>
+
+    <div fxFlex="50" >
+        <div  style="margin: 5px 5px 5px 0px;padding: 15px; border: 1px;border-style: solid; color: lightgrey;">
+            <div fxLayout="row">
+                <h3 class="confirm-title">Address :</h3>
+            </div>
+            <div style="margin:0px 10px 10px 10px;" >
+                <!-- <span class="total-item"  >No: 59, Fruits & Veg Market, Behind Union Coop, Al Aweer, DUBAI</span> -->
+                <span class="total-item"  > {{DeliveryTitle}}</span>
+            </div>
+     
+            <div fxLayout="row">
+                <h3 class="confirm-title">Date / Time :</h3>
+            </div>
+            <div style="margin:0px 10px 10px 10px;">
+                <span class="total-item"> {{DeliveryDate}}       {{DeliveryTime}} </span>
+            </div>
+        </div>
+       
+        <div  style="margin: 5px 5px 5px 0px;padding: 15px; border: 1px;border-style: solid; color: lightgrey;">
+            <div fxLayout="row">
+                <h3 class="confirm-title">PACKING :</h3>
+            </div>
+            <div style="margin:0px 10px 10px 10px;" >
+               
+            <mat-radio-group [(ngModel)]="Packing" fxLayout="column" formControlName="Packing"  >
+                <mat-radio-button i18n style="margin: 5px;font: 200 12px Kibfonts;color: #0d2c6c;" [value] =0 >
+                    I would like my loose items packed in eco friendly recyclable PAPER bags.
+                 </mat-radio-button>
+                 <mat-radio-button i18n style="margin: 5px;font: 200 12px Kibfonts;color: #0d2c6c;" checked [value] =1>
+                    I would like my loose items packed without bags where possible.
+                 </mat-radio-button>
+                 <mat-radio-button i18n style="margin: 5px;font: 200 12px Kibfonts;color: #0d2c6c;" [value] =2>
+                    I would like my order to be gift wrapped and packed as a present.
+                 </mat-radio-button>
+            </mat-radio-group>
+        </div>
+        </div>
+        <div  style="margin: 5px 5px 5px 0px;padding: 15px; border: 1px;border-style: solid; color: lightgrey;">
+            <div fxLayout="row">
+                <h3 class="confirm-title">INVOICE :</h3>
+            </div>
+            <div style="margin:0px 10px 10px 10px;" >
+               
+            <mat-radio-group [(ngModel)]="Invoice" fxLayout="column" formControlName="Invoice"  >
+                <mat-radio-button i18n style="margin: 5px;font: 200 12px Kibfonts;color: #0d2c6c;" checked [value] =0>
+                    I would like my invoice to be sent by email only. Let’s go green!
+                 </mat-radio-button>
+                 <mat-radio-button i18n style="margin: 5px;font: 200 12px Kibfonts;color: #0d2c6c;"  [value] =1>
+                    I would like my invoice to be printed and sent with the delivery please.
+                 </mat-radio-button>
+            </mat-radio-group>
+        </div>
+        </div>
+        <div  style="margin: 5px 5px 5px 0px;padding: 15px; border: 1px;border-style: solid; color: lightgrey;">
+            <div fxLayout="row">
+                <h3 class="confirm-title">IF Out of STOCK :</h3>
+            </div>
+            <div style="margin:0px 10px 10px 10px;" >
+               
+            <mat-radio-group fxLayout="column" formControlName="OutofStock" >
+                <mat-radio-button i18n style="margin: 5px;font: 200 12px Kibfonts;color: #0d2c6c;" checked [value] =0>
+                    If my selected items are not available, please send suitable replacement products, if possible.
+                 </mat-radio-button>
+                 <mat-radio-button i18n style="margin: 5px;font: 200 12px Kibfonts;color: #0d2c6c;" [value] =1>
+                    If my selected items are not available, I do not wish to receive any alternate options.
+                 </mat-radio-button>
+            </mat-radio-group>
+        </div>
+        </div>
+        <div  style="margin: 5px 5px 5px 0px;padding: 15px; border: 1px;border-style: solid; color: lightgrey;">
+            <div fxLayout="row">
+                <h3 class="confirm-title">SPECIAL INSTRUCTIONS :</h3>
+            </div>
+            <div style="margin:0px 10px 10px 10px;" >
+                <textarea matInput placeholder="Type Your Message" cdkTextareaAutosize formControlName="SpecialMessage"
+                cdkAutosizeMinRows="3"></textarea>
+               </div>
+        </div> 
+    
+    </div>
+ </div>
+<div fxLayoutAlign="center center" class="mat-elevation p-3">
+    <button i18n mat-raised-button color="primary" type="submit">CONFIRM ORDER</button> 
+  </div>
+</form>
+</div>

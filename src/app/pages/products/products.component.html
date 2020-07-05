@@ -1,0 +1,68 @@
+
+<div class="product" >
+    <div  class="kibimgbox" >
+        <div class="primary_image" >
+            <img  style="border-radius: 5px;"   [src]="stockMaster?.StockImgLink">  <!-- [class.mat-elevation-z15]=true  -->
+        </div>
+        <div class="new-small-icons">
+            <div class="new-ribbon" *ngIf="stockMaster?.category_icon != 'NO'"  >
+        <img src='assets/images/{{stockMaster?.category_icon}}.png'>
+        </div>  
+        <div class="new-ribbon" *ngIf="stockMaster?.featured_icon != 'NO'" >
+            <img src="assets/images/{{stockMaster?.featured_icon}}.png">
+        </div>
+        <div class="new-ribbon" *ngIf="stockMaster?.Meat_icon != 'NO'" >
+            <img src="assets/images/{{stockMaster?.Meat_icon}}.png">
+        </div>
+       
+        
+</div>  
+<div class="preorder-ribbon" *ngIf="stockMaster?.isPromotionText != 'NO'" >
+    <p>{{stockMaster?.isPromotionText}}</p>
+</div> 
+    </div>
+    <div class="products-name">{{stockMaster?.StockDesc}}</div>
+    <div class="product-origin-kib">{{stockMaster?.StockOrigin}}</div>
+   
+
+    <div class="product-title">
+      <span class="kib-price" *ngIf="stockMaster?.StockOldPrice != 0" > {{stockMaster?.DisplayRate |  number:'1.2-2'}} </span> 
+     <span *ngIf="stockMaster?.StockOldPrice != 0"><s style="color: #a30b33;"><span class="strikeout">{{stockMaster?.StockOldPrice |  number:'1.2-2'}}</span></s> / {{stockMaster?.DisplayUnits}}</span>
+     <span *ngIf="stockMaster?.StockOldPrice == 0">{{stockMaster?.DisplayRate |  number:'1.2-2'}} / {{stockMaster?.DisplayUnits}}</span>
+    </div>
+
+    <!-- <div class="product-title"  *ngIf="stockMaster?.StockOldPrice == 0" >
+        {{stockMaster?.DisplayRate |  number:'1.2-2'}}/{{stockMaster?.DisplayUnits}}
+    </div> -->
+
+    <div class="product-details product-desc-kib space-20">{{stockMaster?.StockDetail1}}</div>
+
+    <div class="quantity-box" fxLayoutAlign="center center">      
+        <button mat-button class="btnminus btn-minus-text" (click)='SubQty(stockMaster)'>-</button>
+        <p fxLayoutAlign="center center" class="qtyselection">{{stockMaster?.StockCartQty}}</p>
+        <button mat-button class="btnplus btn-plus-text" (click)='AddQty(stockMaster)'>+</button>
+    </div>
+    <div class="boxshlist">
+        <div class="wishlist-box wishlist-box-organic" [ngStyle]="{'background-color': stockMaster?.RibbonColor}">
+            <div class="textbox">
+                <div class="wishlist-text" >
+                   {{stockMaster?.RibbonText}}
+                </div>
+            </div>
+
+            <div class="iconbox">
+                <button id="addfavourite_83"  mat-icon-button (click)='addfav($event);'>
+                    <mat-icon [ngStyle]="{'color': myVariableColor}" class="i" >favorite</mat-icon>
+                </button>
+                <!-- <button id="removefavourite_83"  style="padding:0px !important;" onclick="FavouriteManagement('pkt', 'BEEMIAURS200FO', '100', 2243, 'MINUS', 83, 0, 'Ground Beef')">
+                    <mat-icon style="color:#a30b33;">favorite</mat-icon>
+                </button> -->
+            </div>
+        </div>
+
+    </div>
+    <div style="margin:  25px 0px;" >
+    <mat-divider></mat-divider>
+</div>
+</div>
+

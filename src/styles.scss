@@ -1,0 +1,597 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('https://cdn.quilljs.com/1.2.2/quill.snow.css');
+@import url('https://cdn.quilljs.com/1.2.2/quill.bubble.css');
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+// @import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import "~@ng-select/ng-select/themes/material.theme.css";
+
+
+@import "app/theme/styles/base";
+@import "app/theme/styles/spaces";
+@import "app/theme/styles/libs-override";
+@import "app/theme/styles/theme";
+@import "app/theme/styles/gradients";
+@import "app/theme/styles/rtl";
+
+
+@font-face {
+    font-family: '33535gillsansmt';
+    src: url('../src/assets/fonts/en/33535gillsansmt.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Kibfonts';
+    src: url('../src/assets/fonts/en/33535gillsansmt.woff') format('woff');
+}
+@font-face {
+    font-family: '33535gillsansmt';
+    src: url('../src/assets/fonts/en/33535gillsansmt.eot') format('embedded-opentype');
+}
+
+@font-face {
+    font-family: 'KibsonsSB';
+    src: url('../src/assets/fonts/en/GillSansStd-SamiBold.otf') format('opentype');
+}
+@font-face {
+    font-family: 'KibsonsXB';
+    src: url('../src/assets/fonts/en/GillSansStd-ExtraBold.otf') format('opentype');
+}
+@font-face {
+    font-family: 'Kibfonts1';   
+    src:url('../src/assets/fonts/SignPainter\ HouseScript\ Regular.ttf') format('truetype');    
+}
+
+// body{max-width: 1050px; margin: auto;}
+
+.products { width: 100%; background-color: #fff;}
+.products .product {width: 20%; float: left; max-height: 500px; text-align: center; }
+.products .product img{width: 90%; height: 200px;} //width: 200px
+.products .product .quantity-box {width: 80%;    position: relative;     margin: auto;  margin-bottom: 3px;}
+.products .product .quantity-box button.btnminus { background: #8cc751; border: none; border-width: 0; height: 34px; line-height: 20px; outline: none; width: 30%; border-radius: 0px;}
+.products .product .quantity-box .btn-minus-text { color: #fff; font-family: Arial; font-size: 20px; font-weight: 200;}
+.products .product .quantity-box .qtyselection { background-color: #CBE5B1; border: none; height: 34px; margin-left: -5px; margin-right: -5px; outline: none; padding: 0 !important; text-align: center; vertical-align: top; width: 40%; font: 600 18px/24px 'Kibfonts'; color: #0d2c6c;}
+.products .product .quantity-box button.btnplus { background: #8cc751; border: none; border-width: 0; height: 34px; line-height: 20px; outline: none; width: 30%; border-radius: 0px; }
+// padding-left: 5px;
+.products .product .quantity-box  .btn-plus-text { color: #fff;  font-family: Arial; font-size: 20px; font-weight: 200; }
+
+.products .product .boxshlist { border-width: 0; color: #fff; font-size: 12px; font-weight: 400; font-family: Kibfonts; width: 80%; margin: auto; position: relative; overflow: hidden; padding: 1px; margin-bottom: 10px; }
+.products .product  .wishlist-box-organic { font-size: 18px; line-height: 34px; position: relative;}
+.products .product  .wishlist-box { width: 100%; display: inline-flex; height: 34px;font-family: Kibfonts1; }
+
+.products .product .wishlist-box .textbox {width: 80%;margin-right: 2px;}
+
+.textbox .wishlist-text { text-align: center; width: 100%; }
+.wishlist-box .iconbox { width: 20%; line-height: 34px; text-align: center; }
+a{cursor: pointer;}
+
+a { color: #0C6638; }
+
+.products-name { color: #0d2c6c; font-family: Kibfonts; font-weight: 400; font-size: 18px;  white-space: nowrap;}
+.product-title-kib {height: 28px;overflow: hidden; padding: 8px; }
+
+.product-origin-kib {color: #8cc751; height: 26px; overflow: hidden; font-family:Kibfonts; font-weight:400;}
+
+.product-desc-kib { color: #706b66; height: 20px; font-size:16px; font-family:Kibfonts;  font-weight:400;  overflow: hidden;  margin-bottom:10px;}
+
+.btnwishlist {
+    background-color:transparent;
+    border-width: 0;
+    color: #0d2c6c;
+    font-size: 12px;
+    font-weight:400;
+    font-family:Kibfonts;
+    width:80%;
+    border:1px solid #706b66;
+}
+
+.kib-home-blog {
+    height: auto;
+    overflow: hidden;
+}
+
+
+
+.products .product p.product-title { color: #58585a; font: 400 18px/16px "Kibfonts";}
+.products .product .description { color: #858585; display: none; font: 400 13px/20px "Kibfonts"; margin-bottom: 15px;}
+.products .product .product-price { color: #0E2B6C; display: inline-block; font-family: "Kibfonts"; font-size: 20px; font-weight: 400; line-height: 20px; margin-bottom: 5px; margin-top: 10px; position: relative; vertical-align: bottom;}
+.products .product .product-price:after {
+        -o-transition: all 0.6s ease 0s;
+        -webkit-transition: all 0.6s ease 0s;
+        background: #eeeeee;
+        bottom: 0px;
+        content: "";
+        height: 1px;
+        left: 50%;
+        position: absolute;
+        right: 50%;
+        transition: all 0.6s ease 0s;
+    }
+
+.products .product .product-price-old {
+    color: #a30b33;
+    display: inline-block;
+    font-family: "Kibfonts";
+    font-size: 16px;
+    font-weight: 400;
+    /*margin-bottom: 16px;*/
+    // margin: 3px;
+    text-decoration: line-through;
+    vertical-align: bottom;
+}
+
+.products .product .add-to-cart {
+    -o-transition: all 0.3s ease 0s;
+    -webkit-transition: all 0.3s ease 0s;
+    color: #222;
+    display: inline-block;
+    font-size: 13px;
+    font-style: normal;
+    margin-bottom: 20px;
+    opacity: 0;
+    padding: 0px;
+    padding-left: 20px;
+    position: relative;
+    text-transform: uppercase;
+    transition: all 0.3s ease 0s;
+}
+
+    .products .product .add-to-cart::after {
+        color: #555555;
+        content: "\f067";
+        font-family: "FontAwesome";
+        font-size: 16px;
+        font-style: normal;
+        left: 0px;
+        line-height: 1;
+        position: absolute;
+        top: 3px;
+    }
+
+    .boxshlist {
+        border-width: 0;
+        color: #fff;
+        font-size: 12px;
+        font-weight: 400;
+        font-family: Kibfonts;
+        width: 80%;
+        margin: auto;
+        position: relative;
+        overflow: hidden;
+        padding: 1px;
+        margin-bottom: 10px;
+    }
+    
+        .boxshlist .favbutton {
+            right: 0;
+            background-color: transparent;
+            border: none;
+            border-bottom: none;
+            border-right: none;
+            border-top: none;
+            top: 0;
+            bottom: 0;
+            line-height: 34px;
+            text-align: center;
+        }
+    
+        .boxshlist .verticalLine {
+            border-left: 1px solid #000;
+        }
+    
+        .boxshlist .favbutton i {
+            font-size: 20px;
+            color: #a30b33;
+        }
+    
+    .favbutton img {
+        display: inherit !important;
+        height: 18px;
+        width: auto !important;
+    }
+    
+    .wishlist-text {
+        text-align: center;
+        width: 100%;
+    }
+    
+    .wishlist-box {
+        width: 100%;
+        display: inline-flex;
+        height: 34px;
+        font-family: Kibfonts1;
+    }
+    
+    
+    
+    .wishlist-box-new {
+        border: 1px solid #424f85;
+        background-color: #0d2c6c;
+        font-size: 18px;
+        line-height: 34px;
+        position: relative;
+    }
+    
+        .wishlist-box-new::after {
+            content: "";
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            bottom: 0;
+            left: 78%;
+            border-left: 1px solid #424f85;
+        }
+    
+    .wishlist-box-frozen {
+        border: 1px solid #aae1fa;
+        background-color: #44c8f5;
+        font-size: 18px;
+        line-height: 34px;
+        position: relative;
+    }
+    
+        .wishlist-box-frozen::after {
+            content: "";
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            bottom: 0;
+            left: 78%;
+            border-left: 1px solid #aae1fa;
+        }
+    
+    
+    .wishlist-box-promo {
+        border: 1px solid #c4646a;
+        background-color: #a30b33;
+        font-size: 18px;
+        line-height: 34px;
+        position: relative;
+    }
+    
+        .wishlist-box-promo::after {
+            content: "";
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            bottom: 0;
+            left: 78%;
+            border-left: 1px solid #c4646a;
+        }
+    
+    .wishlist-box-imperfect {
+        border: 1px solid #add584;
+        background-color: #8cc751;
+        font-size: 18px;
+        line-height: 34px;
+        position: relative;
+    }
+    
+        .wishlist-box-imperfect::after {
+            content: "";
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            bottom: 0;
+            left: 78%;
+            border-left: 1px solid #add584;
+        }
+    
+    .wishlist-box-organic {
+        font-size: 18px;
+        line-height: 34px;
+        position: relative;
+    }
+    
+        .wishlist-box-organic::after {
+            content: "";
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            bottom: 0;
+            left: 78%;
+            border-left: 1px solid #fff;
+        }
+    
+    .wishlist-box-fresh {
+        border: 1px solid #424f85;
+        background-color: #0d2c6c;
+        font-size: 18px;
+        line-height: 34px;
+        position: relative;
+    }
+    
+        .wishlist-box-fresh::after {
+            content: "";
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            bottom: 0;
+            left: 78%;
+            border-left: 1px solid #424f85;
+        }
+    
+    .wishlist-box-add-wishlist {
+        border: 1px solid #cfc3b5;
+        background-color: #e7e0d8;
+        color: #58585a;
+        font-family: Kibfonts;
+        font-size: 14px;
+        line-height: 30px;
+        position: relative;
+    }
+    
+        .wishlist-box-add-wishlist::after {
+            content: "";
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            bottom: 0;
+            left: 78%;
+            border-left: 1px solid #cfc3b5;
+        }
+    
+    .wishlist-box .textbox {
+        width: 80%;
+        margin-right: 2px;
+    }
+    
+    .wishlist-box .iconbox {
+        width: 20%;
+        line-height: 34px;
+        text-align: center;
+        justify-content: center;
+    }
+    
+        .wishlist-box .iconbox i {
+            color: #fff;
+            margin: 2px;
+            justify-content: center;
+            line-height: 34px;
+        }
+    
+
+        .kibimgbox {
+            height: 220px;
+            background-color: transparent;
+            position: relative;
+        }
+        .kibimgbox .new-small-icons {
+            position: absolute;
+            right: 0;
+            margin-right: 5px;
+            bottom: 18px;
+        }
+        
+.new-ribbon {
+    bottom: 15px;
+    right: 0;
+    margin-right: 10px;
+    padding: 1px;
+}
+
+    .new-ribbon img {
+        height: 45px !important;
+        width: auto !important;
+    }
+
+
+
+    .preorder-ribbon {
+        color: white;
+        background-color: #a30b33;
+        width: 80%;
+        text-align: center;
+        line-height: 12px;
+        position: absolute;
+        // bottom: -13px;
+        padding: 3px 0px;
+        font-size: 13px;
+        font-style: italic;
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
+    }
+
+    .kib-price {
+        color: #a30b33 !important;
+        margin-right: 5px !important;
+        font-size: 18px !important;
+        font-weight: bold !important;
+    }
+    .strikeout {
+        font-size: 18px;
+        line-height: 16px;
+        position: relative;
+        color: #58585a!important;
+    }
+    .product-title {
+        color: #58585a;
+        font: 400 18px/16px "Kibfonts";
+    }
+
+    .product:hover .primary_image {
+        -o-transition: all 0.3s ease 0s;
+        -webkit-transition: all 0.3s ease 0s;
+        transform: scale(1.1);
+        transition: all 0.3s ease 0s;
+    }
+    .cart-discount{padding-top:6px;margin:auto;}
+
+    // .cartimg{position: relative; height:30px; width:auto;margin: 0px 15px;}
+
+    .search-area {
+        height: 40px;
+        text-align: center;
+        line-height: 40px;
+    }
+    // .my-cart-new {
+    //     display: inline-flex;
+    //     width: 100%;
+    //     height: 80px;
+    //     text-align: center;
+    //     line-height: 80px;
+    // }
+
+// .my-cart-new img {
+//     height: 30px;
+//     width: auto;
+//     margin: 0px 10px;
+//     position: relative;
+// }
+
+.my-cart-new p {
+    font-family: Kibfonts;
+    font-size: 18px;
+    font-weight: 600;
+    color: #0d2c6c;
+    padding-top: 13px;
+    line-height: 15px;
+}
+
+    .cartcount {
+        position: absolute;
+        color: #0d2c6c;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding-top: 10px;
+    }
+    .favcount {
+        position: absolute;
+        color: #ffffff;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+.title-brand {
+    color: #0C6638;
+    font-family: Kibfonts;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 20px;
+    margin-bottom: 15px;
+}
+.address-dropdown
+{
+    background: #fff;
+    color: #0E2B6C;
+    display: block;
+    font: 400 14px "Kibfonts";
+    // height: 35px;
+    // line-height: 1.625;
+    // padding: 9px 20px;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+    width: 100%;
+}
+
+.kib-footer{
+    background-color:#DDD4C9;
+    padding-top:25px;
+    padding-bottom:10px;
+ }
+ .kib-footer h3{
+    color: #a30b33;
+    font: 600 20px "Kibfonts";
+    line-height: 33px;
+ }
+
+.footer-blue  h2{
+
+    color: #fff;
+    font-size: 22px;
+    font: 600 22px "Kibfonts";
+    line-height: 35px;
+    }
+.footer-tb{width:100%; position:relative; padding-bottom: 15px;}
+.footer-tb-abs {
+    left: 0px;
+    z-index: 1;
+    width:100%; position:relative; 
+    min-height: 80px;
+    border-bottom: 1px solid #35353533;
+}
+.footer-blue {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #fff;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    // width: 80%;
+}
+.footer-blue .kib-grid40 {
+    width: 40%;
+    display: inline-flex;
+    padding-right: 15%;
+}
+.footer-tb-abs .sm-box{width:20%; float:left;display: inline-flex;}
+.footer-tb-abs .sm-box a {width:20%; float:left;display: inline-flex;}
+.sm-box img {   
+    width: auto;
+    height: 65px;
+}
+.sm-box p{
+    font: 600 12px "Kibfonts";
+    margin: auto;
+    margin-left: 15px;
+    margin-right: 10px;
+    color: #0d2c6c;
+}
+.footer-sm-icon{
+    vertical-align: middle;
+    // width: 80%;
+    // box-sizing: border-box;
+}
+.footer-sm-icon img {
+    display: inline-flex;
+    height: 20px;
+}
+.footer-sm-icon p {
+    display: inline-flex;
+    color: #706b66;    
+    font: 16px "Kibfonts"; 
+    margin-left: 5px;     
+    white-space: normal;
+    line-height: 20px;
+}
+
+
+.footer-blue .red-border-bottom {
+    border-bottom: 5px solid #a30b33;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 30%;
+}
+.footer-blue p {
+    color: white;    
+    font: 16px "Kibfonts";
+    white-space: normal;
+    box-sizing: border-box;
+    // margin-top: 10px;
+    // margin-bottom: 10px;
+    // width: 30%;
+    line-height: 25px;
+}
+.footer-copyright{
+    color: white;
+    font: 10px "Kibfonts";
+    margin-top: 10px;
+    margin-bottom: 10px;
+    // width: 30%;
+}
+.footer-blue h4 {
+    color: #a30b33;
+    font: 600 18px "Kibfonts";
+    line-height: 30px;
+}
+.footer-blue a {
+    color: #fff;
+    font: 16px "Kibfonts";
+    line-height: 15px;
+}
+.footer-blue img {
+width: auto !important;
+    height: 65px;
+}
